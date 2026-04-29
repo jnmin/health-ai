@@ -165,6 +165,15 @@ def add_log():
     return jsonify(entry), 201
 
 
+@app.route("/log", methods=["DELETE"])
+def clear_log():
+    data = load_data()
+    user = get_or_create_user(data)
+    user["log"] = []
+    save_data(data)
+    return jsonify({"ok": True})
+
+
 @app.route("/suggest", methods=["POST"])
 def suggest():
     data = load_data()

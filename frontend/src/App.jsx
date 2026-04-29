@@ -124,6 +124,27 @@ function App() {
     }
   };
 
+  const handleClearLogs = async () => {
+    const confirmed = window.confirm("Clear all saved logs?");
+    if (!confirmed) {
+      return;
+    }
+
+    setError("");
+    setStatus("");
+
+    try {
+      await requestJson("/log", { method: "DELETE" });
+      setLogs([]);
+      setSuggestion("");
+      setSuggestionSource("");
+      setShowHistoryModal(false);
+      setStatus("Logs cleared.");
+    } catch (clearError) {
+      setError(clearError.message);
+    }
+  };
+
   const recentLogs = logs.slice().reverse();
   const previewLogs = recentLogs.slice(0, 3);
 
@@ -243,15 +264,26 @@ function App() {
         <section className="card panel-history">
           <div className="section-row">
             <h2>Log History</h2>
-            {logs.length > 3 ? (
-              <button
-                className="action-button action-button-small"
-                type="button"
-                onClick={() => setShowHistoryModal(true)}
-              >
-                Show More
-              </button>
-            ) : null}
+            <div className="history-actions">
+              {logs.length > 3 ? (
+                <button
+                  className="action-button action-button-small"
+                  type="button"
+                  onClick={() => setShowHistoryModal(true)}
+                >
+                  Show More
+                </button>
+              ) : null}
+              {logs.length > 0 ? (
+                <button
+                  className="ghost-button"
+                  type="button"
+                  onClick={handleClearLogs}
+                >
+                  Reset
+                </button>
+              ) : null}
+            </div>
           </div>
           {logs.length === 0 ? (
             <p className="muted">No entries yet.</p>
@@ -281,13 +313,24 @@ function App() {
           >
             <div className="modal-header">
               <h2 id="history-modal-title">Full Log History</h2>
-              <button
-                className="action-button action-button-small"
-                type="button"
-                onClick={() => setShowHistoryModal(false)}
-              >
-                Close
-              </button>
+              <div className="history-actions">
+                {recentLogs.length > 0 ? (
+                  <button
+                    className="ghost-button"
+                    type="button"
+                    onClick={handleClearLogs}
+                  >
+                    Reset
+                  </button>
+                ) : null}
+                <button
+                  className="action-button action-button-small"
+                  type="button"
+                  onClick={() => setShowHistoryModal(false)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
 
             {recentLogs.length === 0 ? (

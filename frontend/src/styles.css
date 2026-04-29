@@ -151,6 +151,26 @@ button:disabled {
   padding: 0.58rem 0.85rem;
 }
 
+.history-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.ghost-button {
+  padding: 0.25rem 0.1rem;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(184, 255, 82, 0.62);
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+}
+
+.ghost-button:hover {
+  color: rgba(184, 255, 82, 0.9);
+}
+
 .panel-log {
   grid-area: log;
 }
@@ -400,6 +420,10 @@ button:disabled {
   .action-button-small {
     width: auto;
     min-width: 0;
+  }
+
+  .history-actions {
+    align-items: flex-start;
   }
 
   .suggestion-box,

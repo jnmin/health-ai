@@ -2,32 +2,7 @@
   "users": [
     {
       "id": "default-user",
-      "log": [
-        {
-          "date": "2026-04-29",
-          "meals": "toast",
-          "sleep": 7.0,
-          "mood": "good"
-        },
-        {
-          "date": "2026-04-29",
-          "meals": "food",
-          "sleep": 3.0,
-          "mood": "relaxed"
-        },
-        {
-          "date": "2026-04-29",
-          "meals": "cod",
-          "sleep": 9.0,
-          "mood": "calm"
-        },
-        {
-          "date": "2026-04-29",
-          "meals": "salmon",
-          "sleep": 9.0,
-          "mood": "stressed"
-        }
-      ]
+      "log": []
     }
   ]
 }
