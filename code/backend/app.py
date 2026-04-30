@@ -9,7 +9,8 @@ from openai import OpenAI
 
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA_FILE = BASE_DIR / "data.json"
+REPO_ROOT = BASE_DIR.parent.parent
+DATA_FILE = REPO_ROOT / "data" / "data.json"
 DEFAULT_USER_ID = "default-user"
 
 app = Flask(__name__)
@@ -193,4 +194,5 @@ def suggest():
 
 if __name__ == "__main__":
     ensure_data_file()
-    app.run(debug=True, port=5000)
+    debug_enabled = os.getenv("FLASK_DEBUG") == "1"
+    app.run(debug=debug_enabled, host="127.0.0.1", port=5050)

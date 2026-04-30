@@ -8,9 +8,9 @@ from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 ZIP_PATH = Path("/tmp/dina-2.93.zip")
-OUTPUT_DIR = REPO_ROOT / "frontend" / "src" / "assets" / "fonts"
+OUTPUT_DIR = REPO_ROOT / "code" / "frontend" / "src" / "assets" / "fonts"
 OUTPUT_FONT = OUTPUT_DIR / "Dina-Regular.ttf"
 OUTPUT_LICENSE = OUTPUT_DIR / "Dina-LICENSE.txt"
 BDF_MEMBER = "BDF/Dina_r400-10.bdf"

@@ -12,8 +12,8 @@ import {
 const API_BASE_CANDIDATES = [
   import.meta.env.VITE_API_BASE_URL,
   "/api",
-  "http://127.0.0.1:5000",
-  "http://localhost:5000",
+  "http://127.0.0.1:5050",
+  "http://localhost:5050",
 ].filter(Boolean);
 
 const initialForm = {
